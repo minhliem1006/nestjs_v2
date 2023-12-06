@@ -5,8 +5,12 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 // import { User } from './user/entities/user.entity';
 import { dataSourceOptions } from 'db/data-source';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+import { PostModule } from './post/post.module';
+import { CategoryModule } from './category/category.module';
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions),],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions), AuthModule,ConfigModule.forRoot(),UserModule, PostModule, CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })
